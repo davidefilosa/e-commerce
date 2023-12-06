@@ -17,13 +17,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   return (
-    <div
-      className={noHeaderFooterUrls.includes(pathname) ? classes.hide : ''}
-      style={{
-        opacity: isInView ? 1 : 0,
-        transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
-      }}
-    >
+    <div className={noHeaderFooterUrls.includes(pathname) ? classes.hide : ''}>
       <Gutter>
         <ul className={classes.inclusions}>
           {inclusions.map((item, index) => (
@@ -46,7 +40,13 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
           ))}
         </ul>
       </Gutter>
-      <footer className={classes.footer} ref={ref}>
+      <motion.footer
+        className={classes.footer}
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 1 }}
+      >
         <Gutter>
           <div className={classes.wrap}>
             <Link href="/">
@@ -79,7 +79,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
             </div>
           </div>
         </Gutter>
-      </footer>
+      </motion.footer>
     </div>
   )
 }
