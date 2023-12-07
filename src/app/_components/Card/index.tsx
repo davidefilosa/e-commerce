@@ -68,54 +68,34 @@ export const Card: React.FC<{
   }, [priceJSON])
 
   return (
-    <motion.div
-      className={[classes.card, className].filter(Boolean).join(' ')}
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Link href={href} className={classes.mediaWrapper}>
-        {!metaImage && <div className={classes.placeholder}>No image</div>}
-        {metaImage && typeof metaImage !== 'string' && (
-          <Media imgClassName={classes.image} resource={metaImage} fill />
-        )}
-      </Link>
-      <div className={classes.content}>
-        {showCategories && hasCategories && (
-          <div className={classes.leader}>
-            {showCategories && hasCategories && (
-              <div>
-                {categories?.map((category, index) => {
-                  const { title: titleFromCategory } = category
-
-                  const categoryTitle = titleFromCategory || 'Untitled category'
-
-                  const isLast = index === categories.length - 1
-
-                  return (
-                    <Fragment key={index}>
-                      {categoryTitle}
-                      {!isLast && <Fragment>, &nbsp;</Fragment>}
-                    </Fragment>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        )}
-        {titleToUse && (
-          <h4 className={classes.title}>
-            <Link href={href} className={classes.titleLink}>
-              {titleToUse}
-            </Link>
-          </h4>
-        )}
-        {description && (
-          <div className={classes.body}>
-            {description && <p className={classes.description}>{sanitizedDescription}</p>}
-          </div>
-        )}
-        {doc && <Price product={doc} />}
-      </div>
-    </motion.div>
+    <Link href={href} className={[classes.card, className].filter(Boolean).join(' ')}>
+      <motion.div
+        className={[classes.card, className].filter(Boolean).join(' ')}
+        transition={{ duration: 1, delay: 0.5 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <motion.div
+          className={classes.mediaWrapper}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 1 }}
+        >
+          {!metaImage && <div className={classes.placeholder}>No image</div>}
+          {metaImage && typeof metaImage !== 'string' && (
+            <Media imgClassName={classes.image} resource={metaImage} fill />
+          )}
+        </motion.div>
+        <div className={classes.content}>
+          {titleToUse && <h4 className={classes.title}>{titleToUse}</h4>}
+          {description && (
+            <div className={classes.body}>
+              {description && <p className={classes.description}>{sanitizedDescription}</p>}
+            </div>
+          )}
+          {doc && <Price product={doc} />}
+        </div>
+      </motion.div>
+    </Link>
   )
 }

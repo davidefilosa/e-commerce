@@ -7,6 +7,7 @@ import { Checkbox } from '../../../_components/Checkbox'
 import { HR } from '../../../_components/HR'
 import { RadioButton } from '../../../_components/Radio'
 import { useFilter } from '../../../_providers/Filter'
+import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 
@@ -26,7 +27,12 @@ const Filters = ({ categories }: { categories: Category[] }) => {
   const handleSort = (value: string) => setSort(value)
 
   return (
-    <div className={classes.filters}>
+    <motion.div
+      className={classes.filters}
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+    >
       <div>
         <h6 className={classes.title}>Product Categories</h6>
         <div className={classes.categories}>
@@ -63,7 +69,7 @@ const Filters = ({ categories }: { categories: Category[] }) => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

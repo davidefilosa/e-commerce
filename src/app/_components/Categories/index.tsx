@@ -19,15 +19,15 @@ const Categories = ({ categories }: { categories: Category[] }) => {
         <Link href="/products">Show All</Link>
       </div>
 
-      <div className={classes.list}>
+      <div className={classes.list} ref={ref}>
         {categories.map((category, index) => {
           return (
             <motion.div
-              ref={ref}
               key={category.id}
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.25, delay: index * 0.5 }}
+              viewport={{ once: true }}
             >
               <CategoryCard category={category} />
             </motion.div>
