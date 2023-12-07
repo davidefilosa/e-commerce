@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Product } from '../../../payload/payload-types'
 import { Media } from '../Media'
 import { Price } from '../Price'
+import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 
@@ -67,7 +68,11 @@ export const Card: React.FC<{
   }, [priceJSON])
 
   return (
-    <div className={[classes.card, className].filter(Boolean).join(' ')}>
+    <motion.div
+      className={[classes.card, className].filter(Boolean).join(' ')}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link href={href} className={classes.mediaWrapper}>
         {!metaImage && <div className={classes.placeholder}>No image</div>}
         {metaImage && typeof metaImage !== 'string' && (
@@ -111,6 +116,6 @@ export const Card: React.FC<{
         )}
         {doc && <Price product={doc} />}
       </div>
-    </div>
+    </motion.div>
   )
 }

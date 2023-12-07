@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+'use client'
+
+import React, { Fragment, useRef } from 'react'
 
 import { Page } from '../../../payload/payload-types.js'
 import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
@@ -9,6 +11,7 @@ import { RelatedProducts, type RelatedProductsProps } from '../../_blocks/Relate
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor/index'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding/index'
+import { motion, useInView } from 'framer-motion'
 
 const blockComponents = {
   cta: CallToActionBlock,
@@ -25,7 +28,8 @@ export const Blocks: React.FC<{
   const { disableTopPadding, blocks } = props
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
-
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
   if (hasBlocks) {
     return (
       <Fragment>
@@ -62,15 +66,23 @@ export const Blocks: React.FC<{
 
             if (Block) {
               return (
-                <BackgroundColor key={index} invert={blockIsInverted}>
-                  <VerticalPadding top={paddingTop} bottom={paddingBottom}>
-                    <Block
-                      // @ts-expect-error
-                      id={toKebabCase(blockName)}
-                      {...block}
-                    />
-                  </VerticalPadding>
-                </BackgroundColor>
+                <motion.div
+                  key={index}
+                  ref={ref}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+                  transition={{ duration: 1, delay: 0.5 * index }}
+                >
+                  <BackgroundColor invert={blockIsInverted}>
+                    <VerticalPadding top={paddingTop} bottom={paddingBottom}>
+                      <Block
+                        // @ts-expect-error
+                        id={toKebabCase(blockName)}
+                        {...block}
+                      />
+                    </VerticalPadding>
+                  </BackgroundColor>
+                </motion.div>
               )
             }
           }
