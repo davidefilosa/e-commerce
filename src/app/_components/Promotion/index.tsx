@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 import classes from './index.module.scss'
-import { motion, useInView } from 'framer-motion'
 
 export const Promotion = () => {
   const ref = useRef(null)

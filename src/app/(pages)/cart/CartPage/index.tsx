@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Fragment } from 'react'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Page, Settings } from '../../../../payload/payload-types'
@@ -13,7 +14,6 @@ import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 import CartItem from '../CartItem'
-import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 

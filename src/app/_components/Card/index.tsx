@@ -1,12 +1,12 @@
 'use client'
 
 import React, { Fragment, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Product } from '../../../payload/payload-types'
 import { Media } from '../Media'
 import { Price } from '../Price'
-import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 

@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 
 import { Category } from '../../../payload/payload-types'
 import CategoryCard from './CategoryCard'
 
 import classes from './index.module.scss'
-import { motion, useInView } from 'framer-motion'
 
 const Categories = ({ categories }: { categories: Category[] }) => {
   const ref = useRef(null)

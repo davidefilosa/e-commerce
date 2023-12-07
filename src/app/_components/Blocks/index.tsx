@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Fragment, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 import { Page } from '../../../payload/payload-types.js'
 import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
@@ -11,7 +12,6 @@ import { RelatedProducts, type RelatedProductsProps } from '../../_blocks/Relate
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor/index'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding/index'
-import { motion, useInView } from 'framer-motion'
 
 const blockComponents = {
   cta: CallToActionBlock,

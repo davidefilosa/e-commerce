@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
 
 import { Category } from '../../../../payload/payload-types'
 import { Checkbox } from '../../../_components/Checkbox'
 import { HR } from '../../../_components/HR'
 import { RadioButton } from '../../../_components/Radio'
 import { useFilter } from '../../../_providers/Filter'
-import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 

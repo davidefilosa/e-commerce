@@ -1,13 +1,13 @@
 'use client'
 
 import React, { Fragment } from 'react'
+import { motion } from 'framer-motion'
 
 import { Category, Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
 import { Price } from '../../_components/Price'
-import { motion } from 'framer-motion'
 
 import classes from './index.module.scss'
 

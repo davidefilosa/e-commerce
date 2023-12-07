@@ -1,14 +1,16 @@
 'use client'
 
-import Link from 'next/link'
-import { Header } from '../../../../payload/payload-types'
-import { Gutter } from '../../Gutter'
-import classes from './index.module.scss'
 import Image from 'next/image'
-import { HeaderNav } from '../Nav'
-import { HeaderMobileNav } from '../HeaderMobileNav'
-import { noHeaderFooterUrls } from '../../../costants'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+
+import { Header } from '../../../../payload/payload-types'
+import { noHeaderFooterUrls } from '../../../costants'
+import { Gutter } from '../../Gutter'
+import { HeaderMobileNav } from '../HeaderMobileNav'
+import { HeaderNav } from '../Nav'
+
+import classes from './index.module.scss'
 
 export const HeaderComponent = ({ header }: { header: Header }) => {
   const pathname = usePathname()
