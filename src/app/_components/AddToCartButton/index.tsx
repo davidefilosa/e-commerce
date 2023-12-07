@@ -43,13 +43,13 @@ export const AddToCartButton: React.FC<{
         .join(' ')}
       onClick={
         !isInCart
-          ? () => {
+          ? e => {
+              e.preventDefault()
+              e.stopPropagation()
               addItemToCart({
                 product,
                 quantity,
               })
-
-              router.push('/cart')
             }
           : undefined
       }

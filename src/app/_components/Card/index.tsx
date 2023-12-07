@@ -70,7 +70,6 @@ export const Card: React.FC<{
   return (
     <Link href={href} className={[classes.card, className].filter(Boolean).join(' ')}>
       <motion.div
-        className={[classes.card, className].filter(Boolean).join(' ')}
         transition={{ duration: 1, delay: 0.5 }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
